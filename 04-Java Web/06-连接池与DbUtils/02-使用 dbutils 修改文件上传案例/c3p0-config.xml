@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c3p0-config>
+    <default-config>
+        <!-- 默认配置 -->
+        <property name="user">root</property>
+        <property name="password"></property>
+        <property name="driverClass">
+            com.mysql.jdbc.Driver
+        </property>
+        <property name="jdbcUrl">
+            jdbc:mysql://127.0.0.1:3306/file_system?characterEncoding=utf8&amp;useSSL=false
+        </property>
+        <property name="checkoutTimeout">20000</property>
+        <property name="initialPoolSize">10</property>
+        <property name="maxIdleTime">15</property>
+        <property name="maxPoolSize">20</property>
+        <property name="minPoolSize">5</property>
+    </default-config>
+    <!-- name 为 lanqiao 的配置 -->
+    <named-config name="lanqiao">
+        <property name="initialPoolSize">10</property>
+        <property name="maxPoolSize">15</property>
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        <property name="jdbcUrl">jdbc:mysql://127.0.0.1:3306/file_system?characterEncoding=utf8&amp;useSSL=false</property>
+        <!--此 named-config 中没有配置 user、password 等信息，
+        C3P0 会自动寻找 default-config 中的相应信息-->
+    </named-config>
+</c3p0-config>
