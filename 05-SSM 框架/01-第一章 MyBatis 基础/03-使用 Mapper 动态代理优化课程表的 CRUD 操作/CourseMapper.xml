@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.mapper.ICourseMapper">
+    <!-- 根据课程编号查询某一个课程的信息 -->
+    <select id="queryCourseNo" parameterType="int"
+        resultType="org.lanqiao.entity.Course">
+        select * from course where cNo=#{cNo} 
+    </select>
+
+    <!-- 查询所有课程的信息 -->
+    <select id="queryAllCourse" resultType="org.lanqiao.entity.Course">
+        select * from course
+    </select>
+
+    <!-- 新增一门课程信息 -->
+    <insert id="addCourse" parameterType="org.lanqiao.entity.Course">
+        insert into course(cNo,cName,teacher)
+        values(#{cNo},#{cName},#{teacher})
+    </insert>
+
+    <!-- 根据课程编号，修改课程信息 -->
+    <update id="updateCourse" parameterType="org.lanqiao.entity.Course">
+        update course set cName=#{cName},teacher=#{teacher} 
+        where cNo=#{cNo}
+    </update>
+
+    <!-- 根据课程编号，删除课程信息 -->
+    <delete id="deleteCourse" parameterType="int">
+        delete from course where cNo=#{cNo}
+    </delete>
+
+</mapper>
