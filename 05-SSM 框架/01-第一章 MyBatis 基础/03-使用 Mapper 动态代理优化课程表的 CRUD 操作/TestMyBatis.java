@@ -62,8 +62,6 @@ public class TestMyBatis {
         SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(reader);
         //创建能够执行 SQL 映射文件中 SQL 语句的 SqlSession 对象
         SqlSession session = sessionFactory.openSession();
-        //指定 SQL 语句对应的标识字符串：namespace+id
-        String statement = "org.lanqiao.mapper.CourseMapper.updateCourse";
 
         Course course = new Course(1,"软件测试","李珍");
 
