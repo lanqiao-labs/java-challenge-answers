@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.mapper.ICourseMapper">
+    <resultMap id="courseResult" type="course">  
+        <id property="cNo" column="cNo"/>
+        <result property="cName" column="cName"/>
+        <result property="teacher" column="teacher"/>
+        <result property="cProperties"  column="cProperties" javaType="java.lang.Boolean" jdbcType="INTEGER"/>  
+    </resultMap> 
+
+    <select id="queryCourseByCNoWithConverter" parameterType="int" resultMap="courseResult">  
+        select * from course where cNo=#{cNo}  
+    </select> 
+
+    <update id="updateCourseWithConverter" parameterType="course">
+        update course set cName=#{cName},teacher=#{teacher},cProperties=#{cProperties,javaType=java.lang.Boolean, jdbcType=INTEGER} where cNo = #{cNo}
+    </update>
+</mapper>
