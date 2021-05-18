@@ -16,17 +16,17 @@ import org.lanqiao.mapper.ICourseMapper;
 public class TestMyBatis {
     @Test
     public void testQueryByName() throws IOException{
-        final String resource = "mybatis-config.xml";
-        final Reader reader = Resources.getResourceAsReader(resource);
-        final SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-        final SqlSession session = sqlSessionFactory.openSession();
+        String resource = "mybatis-config.xml";
+        Reader reader = Resources.getResourceAsReader(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+        SqlSession session = sqlSessionFactory.openSession();
         // 使用Mapper动态代理方式查询
-        final ICourseMapper courseMapper = session.getMapper(ICourseMapper.class);
+        ICourseMapper courseMapper = session.getMapper(ICourseMapper.class);
         // 执行查询，传入String类型的“张”
         HashMap<String,String> map = new HashMap<>();
         map.put("teacher", "张");
         map.put("cNo", "cNo");
-        final List<Course> course = courseMapper.queryCourseWithLikeTeacherByOrderByCNo(map);
+        List<Course> course = courseMapper.queryCourseWithLikeTeacherByOrderByCNo(map);
         System.out.println(course);
         session.close();
     }
