@@ -6,6 +6,6 @@
 ---
 
 <div align="center">
-  <p> 访问速度较慢，请浏览 <a href="https://gitee.com/huhuhang/java-employment">国内镜像</a></p>
+  <p> 访问速度较慢，请浏览 <a href="https://gitee.com/lanqiao-courses/java-employment">国内镜像</a></p>
   <p> 反馈存在问题，请前往 <a href="https://github.com/lanqiao-courses/java-employment">原始仓库</a></p>
 </div>
