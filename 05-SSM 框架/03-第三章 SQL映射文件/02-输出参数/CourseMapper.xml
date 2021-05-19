@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.mapper.ICourseMapper">
+    <!-- 查询所有课程的信息 -->
+    <select id="queryAllCourse" resultMap ="courseResultMap"> 
+        select no, name, tName from course
+    </select>  
+    <!-- 配置resultMapmyq，用来指定字段和属性的对应关系 -->
+    <resultMap type="course" id="courseResultMap">
+        <!-- 数据表主键no对应于属性cNo -->
+        <id column="no" property="cNo"/>
+        <!-- 字段name对应于属性stuName -->
+        <result column="name" property="cName"/>
+        <result column="tName" property="teacher"/>
+    </resultMap>
+
+    <!-- 查询课程编号为 1 的课程信息，查询结果需要用 HashMap 来接收 -->
+    <select id="queryCourseByCNo" parameterType="int" resultType ="HashMap">
+        select no, name, tName from course where no = #{no}
+    </select>
+</mapper>
