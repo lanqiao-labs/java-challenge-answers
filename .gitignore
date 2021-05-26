@@ -22,3 +22,9 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 .DS_Store
+05-SSM 框架/04-第四章 关联查询/04-日志输出/.settings/org.eclipse.m2e.core.prefs
+05-SSM 框架/04-第四章 关联查询/04-日志输出/.classpath
+05-SSM 框架/04-第四章 关联查询/04-日志输出/.project
+05-SSM 框架/04-第四章 关联查询/04-日志输出/.settings/org.eclipse.jdt.core.prefs
+05-SSM 框架/04-第四章 关联查询/04-日志输出/.settings/org.eclipse.core.resources.prefs
+05-SSM 框架/04-第四章 关联查询/04-日志输出/.settings/org.eclipse.jdt.apt.core.prefs
