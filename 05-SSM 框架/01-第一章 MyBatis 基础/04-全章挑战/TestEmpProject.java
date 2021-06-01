@@ -78,7 +78,7 @@ public class TestEmpProject{
 
         HashMap<String,Object> param = new HashMap<String,Object>();
         param.put("empNo", 1014);
-        param.put("job1", "助理1");
+        param.put("job1", "经理助理");
         param.put("salary", 2000);
 
         employeeMapper.updateEmpWithProcedure(param);
