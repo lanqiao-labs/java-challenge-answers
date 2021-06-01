@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.mapper.EmployeeMapper">
+    <resultMap id="empResultMap" type="Employee">
+        <!-- 数据表主键empno对应于属性empNo -->
+        <id column="empno" property="empNo"/>
+        <!-- 字段ename对应于属性eName -->
+        <result column="ename" property="eName"/>
+        <result column="job" property="job"/>
+        <result column="mgr" property="mgr"/>
+        <result column="hiredate" property="hireDate"/>
+        <result column="sal" property="sal"/>
+        <result column="comm" property="comm"/>
+        <result column="deptno" property="deptNo"/>
+
+        <association property="department" javaType="Department"
+             select="org.lanqiao.mapper.DepartmentMapper.queryDepartmentByDNo" 
+            column="deptno"/>
+    </resultMap>
+
+    <select id="queryEmpWithJob" parameterType="string" resultMap="empResultMap">
+        select * from emp e 
+        where e.job=(select job from emp where ename=#{eName})
+    </select>
+
+    <!-- 模糊查询 -->
+    <select id="queryEmpWithLike" parameterType="string" resultMap="empResultMap">
+        select * from emp where 1=1
+        <if test="ename != null and ename != ''">
+            and ename like concat('%',#{eName},'%')
+        </if>
+    </select>
+
+    <select id="queryAllEmpAndDeptByEname" parameterType="string" resultType="Employee">
+       SELECT e.*, d.dname FROM emp e, dept d 
+       WHERE e.deptno=d.deptno AND e.job=(SELECT job FROM emp WHERE ename='庞统')
+    </select>
+
+    <select id="queryAllEmps" resultType="Employee">
+       SELECT * FROM emp
+    </select>
+
+    <insert id="insertEmp" parameterType="Employee">
+        insert into emp(empno,ename,job,mgr,hiredate,sal,comm,deptno) 
+        value(#{empNo},#{eName},#{job},#{mgr},#{hireDate},#{sal},#{comm},#{deptNo})
+    </insert>
+
+    <delete id="deleteEmpByEmpNo" parameterType="int">
+        delete from emp where empno=#{empNo}
+    </delete>
+
+    <update id="updateEmpWithProcedure" parameterType="HashMap" statementType="CALLABLE">
+            CALL update_byEmpno(
+                #{empNo,jdbcType=INTEGER,mode=IN},
+                #{salary,jdbcType=DECIMAL,mode=IN},
+                #{job1,jdbcType=VARCHAR,mode=IN}
+            );
+    </update>
+
+    <update id="updateEmpWithSet" parameterType="Employee">
+        update emp 
+        <set>
+            <if test="eName !=null and eName !=''">ename=#{eName},</if>
+            <if test="job !=null and job !=''">job=#{job},</if>
+            <if test="mgr !=null and mgr !=0">mgr=#{mgr},</if>
+            <if test="hireDate !=null">hiredate=#{hireDate},</if>
+            <if test="sal !=null and sal !=0">sal=#{sal},</if>
+            <if test="comm !=null and comm !=0">comm=#{comm},</if>
+            <if test="deptNo !=null and deptNo !=0">deptno=#{deptNo},</if>
+        </set>
+        where empno = #{empNo}
+    </update>
+
+    <!-- 批量插入数据 -->
+    <insert id="insertEmpWithForeach" parameterType="Employee">
+        insert into emp(empno,ename,job,mgr,hiredate,sal,comm,deptno) values
+        <foreach collection ="list" item="emp" separator =",">
+            (#{emp.empNo}, #{emp.eName}, #{emp.job}, #{emp.mgr}, #{emp.hireDate}, #{emp.sal}, #{emp.comm}, #{emp.deptNo})
+        </foreach >
+    </insert>
+</mapper>
