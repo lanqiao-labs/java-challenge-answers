@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.lanqiao.mapper.ICourseMapper">
-    <!-- 查询出授课老师名字带有 “张” 的课程的信息并按照课程编号降序排序 -->
-    <select id="queryCourseWithLikeTeacherByOrderByCNo" parameterType="string" resultType="course">
-        select * from course where teacher like concat('%',#{teacher},'%') order by ${cNo} desc
-    </select>
-</mapper>
