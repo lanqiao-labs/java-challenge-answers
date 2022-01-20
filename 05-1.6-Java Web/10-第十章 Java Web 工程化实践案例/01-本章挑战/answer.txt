@@ -1,0 +1,4 @@
+【1】处填：monitor.newGuard(() -> buffer.size() < MAX_BUFFER_SIZE)
+【2】处填：monitor.newGuard(() -> !buffer.isEmpty())
+【3】处填：count.getAndIncrement()
+【4】处填：monitorDemo.consume()
