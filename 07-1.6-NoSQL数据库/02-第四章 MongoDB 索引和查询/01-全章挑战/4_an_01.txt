@@ -1,0 +1,17 @@
+1.db.books.findAndModify({
+     query:{_id:"10007"},
+     update:{
+         $set:{price:60.9},
+         $inc:{amount:10},
+         $push:{author:"李四"}
+     }，
+     new:true
+ })
+
+2.db.books.find({author:'乔峰'}).sort({amount:-1,price:-1}).pretty()
+
+3.db.books.createIndex({description:"text"})
+
+4.db.books.find({$text:{$search:"Java"}})
+
+5.db.books.find({$text:{$search:"Java"}}).explain()
