@@ -1,0 +1,1 @@
+<%@ page import="org.lanqiao.entity.User" %> <%@ page contentType="text/html;charset=UTF-8" language="java" %> 用户名：<%=((User)session.getAttribute("userInfo")).getUsername() %> 年 龄：<%=((User)session.getAttribute("userInfo")).getUserAge() %> 家庭住址：<%=((User)session.getAttribute("userInfo")).getUserAddress() %>
