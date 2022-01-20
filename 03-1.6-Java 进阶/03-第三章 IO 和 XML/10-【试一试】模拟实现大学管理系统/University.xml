@@ -1,0 +1,41 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+<!DOCTYPE University [
+        <!ELEMENT University (instructors,students)>
+        <!ELEMENT instructors (instructor*)>
+        <!ELEMENT students (student+)>
+        <!ELEMENT instructor (name,department,salary)>
+        <!ATTLIST instructor id CDATA #REQUIRED>
+        <!ELEMENT student (name,department,grade)>
+        <!ATTLIST student id CDATA #REQUIRED>
+        <!ELEMENT name (#PCDATA)>
+        <!ELEMENT department (#PCDATA)>
+        <!ELEMENT salary (#PCDATA)>
+        <!ELEMENT grade (#PCDATA)>
+        ]>
+
+<University>
+    <instructors>
+        <instructor id="1">
+            <name>Einstein</name>
+            <department>Physics</department>
+            <salary>95000</salary>
+        </instructor>
+        <instructor id="2">
+            <name>Mozart</name>
+            <department>Music</department>
+            <salary>40000</salary>
+        </instructor>
+    </instructors>
+    <students>
+        <student id="3">
+            <name>Tom</name>
+            <department>Physics</department>
+            <grade>junior</grade>
+        </student>
+        <student id="4">
+            <name>Jimmy</name>
+            <department>Music</department>
+            <grade>freshman</grade>
+        </student>
+    </students>
+</University>
