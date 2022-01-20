@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.mapper.EmployeeMapper">
+    <select id="queryAllEmpAndDeptByEname" parameterType="string" resultType="Employee">
+       SELECT e.*, d.dname FROM emp e, dept d 
+       WHERE e.deptno=d.deptno AND e.job=(SELECT job FROM emp WHERE ename='庞统')
+    </select>
+
+    <select id="queryAllEmps" resultType="Employee">
+       SELECT * FROM emp
+    </select>
+
+    <insert id="insertEmp" parameterType="Employee">
+        insert into emp(empno,ename,job,mgr,hiredate,sal,comm,deptno) 
+        value(#{empNo},#{eName},#{job},#{mgr},#{hireDate},#{sal},#{comm},#{deptNo})
+    </insert>
+
+    <delete id="deleteEmpByEmpNo" parameterType="int">
+        delete from emp where empno=#{empNo}
+    </delete>
+
+    <update id="updateEmpWithProcedure" parameterType="HashMap" statementType="CALLABLE">
+        
+            CALL update_byEmpno(
+                #{empNo,jdbcType=INTEGER,mode=IN},
+                #{salary,jdbcType=DECIMAL,mode=IN},
+                #{job1,jdbcType=VARCHAR,mode=IN}
+            );
+        
+    </update>
+</mapper>

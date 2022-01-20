@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.mapper.IEmployeeMapper">
+    <!-- 查询一个部门所有的员工信息 -->
+    <select id="queryDepartmentAndEmployeesByDNo" 
+	parameterType="int" resultMap="DepartmentAndEmployeeMap"> 
+	select d.*,e.* from dept d
+		inner join emp e
+		on d.dNo=e.dNo
+		where d.dNo = #{dNo}
+     </select> 
+
+     <resultMap type="Department" id="DepartmentAndEmployeeMap">
+	<id property="dNo" column="dNo" />
+	<result property="dName" column="dName" />
+	<collection property="employees" ofType="Employee">
+		<id property="eNo" column="eNo" />
+		<result property="eName" column="eName" />
+		<result property="job" column="job" />
+                <result property="salary" column="salary" />
+	</collection>
+      </resultMap>
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.mapper.ICourseMapper">
+   <!-- 多对多的查询 -->
+    <select id="queryCoursesAndStudents" resultMap="coursesAndStudentsMap"> 
+	select c.*,sc.*,s.* from course c left join studentCourse sc on c.courseNo=sc.courseNo 
+         left join student s on s.stuNo=sc.stuNo
+    </select> 
+
+    <resultMap type="course" id="coursesAndStudentsMap">
+            <id property="courseNo" column="courseNo" />
+            <result property="courseName" column="courseName" />
+            <collection property="students" ofType="student">
+                   <id property="stuNo" column="stuNo" />
+                   <result property="stuName" column="stuName" />
+                   <result property="stuAge" column="stuAge" />
+                   <result property="graName" column="graName" />
+            </collection>
+    </resultMap>
+</mapper>
