@@ -1,0 +1,1 @@
+zip -e bin.zip /usr/local/bin
