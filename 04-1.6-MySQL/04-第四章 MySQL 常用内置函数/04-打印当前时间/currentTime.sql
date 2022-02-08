@@ -1,0 +1,1 @@
+select DATE_FORMAT(now(),' %h:%i:%S') as '当前时间';

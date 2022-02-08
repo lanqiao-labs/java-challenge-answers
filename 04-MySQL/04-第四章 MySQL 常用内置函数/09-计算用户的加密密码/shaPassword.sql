@@ -1,0 +1,1 @@
+select sha('hongqiao233') as '密码';

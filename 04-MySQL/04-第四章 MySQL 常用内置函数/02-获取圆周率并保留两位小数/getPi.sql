@@ -1,0 +1,1 @@
+SELECT ROUND(PI(),2) as '圆周率';
