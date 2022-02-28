@@ -1,0 +1,19 @@
+server:
+  port: 9999
+spring:
+  application:
+    name: springcloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 开启从注册中心动态创建路由的功能，利用微服务名称进行路由
+      routes: # 路由的相关配置
+        - id: service-consumer-emp
+          uri: http://127.0.0.1:8082
+          predicates: 
+           - Path=/gateway/consumer/emp/**
+          filters: 
+           - StripPrefix=1
+
+        

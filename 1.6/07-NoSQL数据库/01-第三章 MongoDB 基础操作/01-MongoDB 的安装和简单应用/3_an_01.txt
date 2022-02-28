@@ -1,0 +1,41 @@
+1.
+a.在终端执行以下命令，导入 MongoDB 公共 GPG 密钥：
+	wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
+
+b.为 MongoDB 创建一个列表文件：
+	echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+
+c.在终端执行以下命令重新加载本地包数据库:
+	sudo apt-get update
+
+d.安装 MongoDB 并指定版本:
+	sudo apt-get install -y mongodb-org=5.0.2 mongodb-org-database=5.0.2 mongodb-org-server=5.0.2 mongodb-org-shell=5.0.2 mongodb-org-mongos=5.0.2 mongodb-org-tools=5.0.2
+ 
+e.为了防止软件意外升级，可以通过以下命令将软件包固定在当前安装的版本上：
+	echo "mongodb-org hold" | sudo dpkg --set-selections
+  	echo "mongodb-org-database hold" | sudo dpkg --set-selections
+  	echo "mongodb-org-server hold" | sudo dpkg --set-selections
+  	echo "mongodb-org-shell hold" | sudo dpkg --set-selections
+  	echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
+  	echo "mongodb-org-tools hold" | sudo dpkg --set-selections
+
+f.检测安装是否成功
+	$ mongo --version
+
+2.
+$ sudo service mongodb start
+$ mongo
+
+3.
+use lanqiao1
+db.lq1.insertOne({name:'张三',age:34})
+
+use lanqiao2
+db.lq2.insertOne({name:'李四',age:30})
+
+show dbs
+
+4.
+use lanqiao2
+db.dropDatabase()
+

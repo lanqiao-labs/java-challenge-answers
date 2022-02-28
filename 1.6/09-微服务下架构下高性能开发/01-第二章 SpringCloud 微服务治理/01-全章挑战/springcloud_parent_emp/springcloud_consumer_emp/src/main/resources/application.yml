@@ -1,0 +1,9 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: springcloud-consumer-emp #服务名
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #服务注册和发现(默认是注册)
