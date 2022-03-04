@@ -1,0 +1,16 @@
+
+1.
+redis-server (或 sudo service redis-server start)
+
+2.
+redis-cli --raw
+select 2
+
+3.
+lpush music "三生石下" "失忆年华" "孤勇者" "到了这个年纪" "冰雨" "把悲伤留给自己"
+
+4.
+lrange music 0 -1
+
+5.
+lset music 1 "时光洪流"

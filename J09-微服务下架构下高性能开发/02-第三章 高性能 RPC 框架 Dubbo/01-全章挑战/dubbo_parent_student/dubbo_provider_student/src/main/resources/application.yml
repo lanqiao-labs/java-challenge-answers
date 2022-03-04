@@ -1,0 +1,26 @@
+# 自定义端口
+server:
+  port: 8081
+
+# dubbo 注册相关配置
+dubbo:
+  application:
+    name: dubbo-provider-student
+  # 协议名称和端口
+  protocol:
+    name: dubbo
+    port: 20881
+  # 注册中心地址
+  registry:
+    address: zookeeper://127.0.0.1:2181
+    
+# 数据库相关配置
+spring:
+    datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/dubbo?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false
+      username: root
+      password:
+      hikari:
+        maximum-pool-size: 20
+        minimum-idle: 5

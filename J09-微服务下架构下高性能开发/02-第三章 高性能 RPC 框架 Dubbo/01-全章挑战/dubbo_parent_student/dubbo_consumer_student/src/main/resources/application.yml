@@ -1,0 +1,11 @@
+# 修改端口号
+server:
+  port: 8082
+  
+# dubbo 相关配置
+dubbo:
+  application:
+    name: dubbo-consumer-student
+  registry: 
+    address: zookeeper://127.0.0.1:2181
+
