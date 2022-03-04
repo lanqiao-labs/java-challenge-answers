@@ -26,35 +26,32 @@ public class Results {
      * 用于对集合进行排序
      */
     public static void adjust(){
-        // 创建队列
-        PriorityQueue<Student> queue = new PriorityQueue<Student>(11, new Comparator<Student>() {
-            /**
-             * 重写比较器方法
-             */
+		//重写排序规则
+        Collections.sort(data,new Comparator<Student>(){
             @Override
-            public int compare(Student o1, Student o2) {
-                if (o1.getScore() == o2.getScore()) {
-                    return o1.getId() - o2.getId();
+            public int compare(Student a, Student b) {
+                if (a.getScore() == b.getScore()) {
+                    return a.getId() - b.getId();
                 }
-                return o2.getScore() - o1.getScore();
+                return b.getScore()-a.getScore();
             }
-        });
-        // 获取迭代器
-        Iterator<Student> iterator1 = data.iterator();
-        // 进行迭代，将数据导入队列
-        while (iterator1.hasNext()){
-            queue.add(iterator1.next());
-        }
-        // 输出移除信息
-        for (int i = 0; i < 40; i++) {
-            System.out.println(queue.remove());
-        }
-
+               
+           } );
+       
     }
-
+	/**
+	 * 打印方法
+     * 用于对集合进行遍历
+     */
+	public static void  print() {
+        for(int i=0;i<data.length;i++){
+          System.out.println(data.get(i));
+        }
+    }
     public static void main(String[] args) {
         initData();
-        adjust();
+        adjust(); 
+        print();
     }
-
+    
 }
