@@ -25,8 +25,8 @@ alter table emp modify column sal int;
 
 
 -- 删除emp表和dept表的数据
-delete table emp;
+delete from emp;
 truncate table dept;
 -- 删除表和数据库
-drop from emp;
+drop table emp;
 drop database testddl;
