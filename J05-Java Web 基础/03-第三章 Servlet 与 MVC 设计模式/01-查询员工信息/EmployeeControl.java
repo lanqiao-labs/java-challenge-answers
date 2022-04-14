@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/EmployeeControl")
+@WebServlet("/findEmpByEid")
 public class EmployeeControl extends HttpServlet {
     /**
      *
@@ -24,7 +24,7 @@ public class EmployeeControl extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 获取 JSP 页面传入的员工工号
-        String employeeId = request.getParameter("employeeId");
+        String employeeId = request.getParameter("empId");
         // 创建 Dao 层对象
         EmployeeDao ed = new EmployeeDao();
         // 通过 Dao 层对象获取用户对象
