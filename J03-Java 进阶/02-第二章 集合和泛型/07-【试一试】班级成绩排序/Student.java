@@ -8,14 +8,23 @@ public class Student {
     // 成绩
     private int score;
 
+    public Student(){
+       
+    }
 
     public Student(int id,String name,int score){
         this.id = id;
         this.name = name;
         this.score = score;
     }
+    public void setId(int id) {
+        this. id=id;
+    }
     public int getId() {
         return id;
+    }
+    public void setName(String name) {
+        this.name=name;
     }
     public String getName() {
         return name;
@@ -23,6 +32,10 @@ public class Student {
 
     public int getScore() {
         return score;
+    }
+    
+    public void setScore(int score) {
+        this.score=score;
     }
 
     public String toString() {
