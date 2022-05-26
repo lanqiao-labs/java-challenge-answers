@@ -11,7 +11,7 @@ public class Results {
     // 学生集合
     public static List<Student> data = new ArrayList<Student>();
 	// 学生人数
-	public static stuSize = 40 ;
+	public static int stuSize = 40 ;
     /**
      * 初始化集合内的数据
      */
