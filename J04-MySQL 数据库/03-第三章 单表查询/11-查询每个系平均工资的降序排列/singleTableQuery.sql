@@ -1,2 +1,2 @@
 use world;
-select Name as '国家名字',GNP as '国民生产总值' from country ;
+select dept_name,avg(salary) avg_salary from instructor group by dept_name order by avg_salary desc;   
