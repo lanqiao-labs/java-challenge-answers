@@ -5,14 +5,14 @@ import java.util.Scanner;
  * @author lanqiao
  */
 public class PerformanceAnalysis{
-
+     static Scanner scanner = new Scanner(System.in);
     /**
      * 控制台输入数组长度和数组元素，需要注意成绩可能不是整数，因此使用 double 类型的数组
      * @return 包含输入元素的数组
      */
     public static double[] input(){
         // 创建控制台输入对象
-        Scanner scanner = new Scanner(System.in);
+    
         System.out.println("请输入要输入的成绩数组长度：");
         // 接收数组长度
         int length = scanner.nextInt();
