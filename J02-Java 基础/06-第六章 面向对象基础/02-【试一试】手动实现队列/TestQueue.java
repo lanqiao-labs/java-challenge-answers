@@ -1,3 +1,5 @@
+package org.lanqiao.test;
+import org.lanqiao.entity.Queue;
 public class TestQueue {
 
     public static void main(String[] args) {
