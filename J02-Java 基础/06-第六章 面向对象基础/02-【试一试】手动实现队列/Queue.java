@@ -60,11 +60,7 @@ public class Queue {
      * @return
      */
     public boolean empty(){
-        if(this.size==0){
-            return true;
-        }else{
-            return false;
-        }
+       return this.size==0;
     }
 
     /**
