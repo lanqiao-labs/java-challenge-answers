@@ -5,6 +5,17 @@ public class StringRegex {
     
    public static void main(String[] args) {
        // 程序代码
-      
+       StringRegex sr = new StringRegex();
+       sr.splitWord(str1,"");
+       sr.splitWord(str2,"");
    }
+    /**
+     * StringTokenizer
+     */
+    public void splitWord(String word,String delimiter) {
+        StringTokenizer st = new StringTokenizer(word,delimiter);
+        while(st.hasMoreTokens()) {
+            System.out.println(st.nextToken());
+        }
+    }
 }
