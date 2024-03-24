@@ -1,3 +1,5 @@
+import java.util.StringTokenizer;
+
 public class StringRegex {
     
    public static String str1 = "123+456*789-123/456%789";
@@ -6,8 +8,8 @@ public class StringRegex {
    public static void main(String[] args) {
        // 程序代码
        StringRegex sr = new StringRegex();
-       sr.splitWord(str1,"");
-       sr.splitWord(str2,"");
+       sr.splitWord(str1,"+*-/%");
+       sr.splitWord(str2," ");
    }
     /**
      * StringTokenizer
