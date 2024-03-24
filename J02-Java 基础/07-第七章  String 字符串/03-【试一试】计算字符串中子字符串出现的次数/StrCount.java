@@ -3,7 +3,7 @@ import java.util.Scanner;
  * 计算字符串中子字符串出现的次数
  * @author 小桃子
  */
-public class Statistical{
+public class StrCount{
     public static void main(String[] args) {
         int count = 0;    //用于计数的变量
         int start = 0;    //标识从哪个位置开始查找
