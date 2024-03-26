@@ -1,56 +1,53 @@
 package org.lanqiao.entity;
 
-public class Rectangle implements Figure{
-    // 宽
-    private double width;
-    // 高
-    private double height;
+public class Triangle implements Figure{
+    private double side1;
+    private double side2;
+    private double side3;
 
-    /**
-     * @return the height
-     */
-    public double getHeight() {
-        return height;
-    }
+    public Triangle(){}
 
-    /**
-     * @param height the height to set
-     */
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
-    /**
-     * @return the width
-     */
-    public double getWidth() {
-        return width;
-    }
-
-    /**
-     * @param width the width to set
-     */
-    public void setWidth(double width) {
-        this.width = width;
-    }
-
-    public Rectangle(){
-
-    }
-
-    public Rectangle(double width,double height){
-        this.width = width;
-        this.height = height;
+    public Triangle(double side1,double side2,double side3){
+        this.side1 = side1;
+        this.side2 = side2;
+        this.side3 = side3;
     }
 
     @Override
     public double getPerimeter() {
-        return width*2+height*2;
+        // TODO Auto-generated method stub
+        return side1+side2+side3;
     }
 
     @Override
     public double getArea() {
-        return width*height;
+        // TODO Auto-generated method stub
+        double p = (side1+side2+side3)/2;
+        return Math.sqrt(p*(p-side1)*(p-side2)*(p-side3));
+    }
+
+    public double getSide1() {
+        return side1;
+    }
+
+    public void setSide1(double side1) {
+        this.side1 = side1;
+    }
+
+    public double getSide2() {
+        return side2;
+    }
+
+    public void setSide2(double side2) {
+        this.side2 = side2;
+    }
+
+    public double getSide3() {
+        return side3;
+    }
+
+    public void setSide3(double side3) {
+        this.side3 = side3;
     }
 
 }
