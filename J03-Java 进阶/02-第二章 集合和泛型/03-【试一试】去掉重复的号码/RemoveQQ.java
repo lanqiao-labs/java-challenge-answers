@@ -1,12 +1,8 @@
-package org.lanqiao.main;
 
+package org.lanqiao.main;
 import java.util.ArrayList;
 
-
-
-
 public class RemoveQQ {
-
 
     public static void main(String[] args) {
         // 将文档中准备的 QQ 号创建成数组
@@ -18,12 +14,12 @@ public class RemoveQQ {
             list.add(i);
         }
         // 调用 repeat 方法进行去重并获取去重后的集合
-        ArrayList<String> newList = repeat(list);
+        new RemoveQQ().repeat(list);
         // 输出去重后的集合
-        System.out.println(newList);
+        System.out.println(list);
     }
 
-    public static ArrayList<String> repeat(ArrayList<String> list){
+    public void repeat(ArrayList<String> list){
         // 使用循环遍历集合
         for(int i = 0;i<list.size();i++){
             // 使用循环遍历集合中下标 i 之后的元素
@@ -34,6 +30,5 @@ public class RemoveQQ {
                 }
             }
         }
-        return list;
     }
 }
