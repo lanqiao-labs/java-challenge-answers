@@ -1,4 +1,3 @@
-
 public class DataException {
 
     // 数据获取
@@ -30,11 +29,15 @@ public class DataException {
 
     public static void main(String[] args){
         DataException de = new DataException();
-        de.getData(new Object[]{new BService(), new AService(), new BService(), new AService() , new BService(), new AService()});
-        System.out.println("-----------------");
-        de.getData(new Object[]{new BService(), new AService(), new BService(), new AService() , new String(), new BService()});
-        System.out.println("-----------------");
-        de.getData(new Object[]{new BService(), new AService(), new BService(), new AService()});
+        try{
+            de.getData(new Object[]{new BService(), new AService(), new BService(), new AService() , new BService(), new AService()});
+            System.out.println("-----------------");
+            de.getData(new Object[]{new BService(), new AService(), new BService(), new AService() , new String(), new BService()});
+            System.out.println("-----------------");
+            de.getData(new Object[]{new BService(), new AService(), new BService(), new AService()});
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }
 
