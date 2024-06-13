@@ -51,6 +51,7 @@ public class InputArray {
         System.out.print("数组内的元素有：");
         // 遍历数组,并不换行输出内容
         for(int i = 0 ;i < nums.length ; i++){
+             System.out.print(nums[i]+" ");
         }
         // 换行
         System.out.println();
