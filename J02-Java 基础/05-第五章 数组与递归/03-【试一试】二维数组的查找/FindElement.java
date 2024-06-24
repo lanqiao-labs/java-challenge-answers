@@ -9,7 +9,7 @@ public class FindElement{
     public static void main(String[] args) {
         Scanner sc =new Scanner(System.in);
                 
-        System.out.println("请输入想要查找的数字：");
+        System.out.println("请输入查找的数字：");
         int num=sc.nextInt();
         boolean b=findElement(array, num);
         System.out.println(b);
