@@ -3,9 +3,10 @@
  * @author 小桃子
  */
 public class WordFilp {
+      // 提供英文单词数组
+    public static String[] strs = {"I", "Love", "You", "Daddy"};
     public static void main(String[] args) {
-        // 提供英文单词数组
-        String[] strs = {"I", "Love", "You", "Daddy"};
+      
         // 创建字符串缓冲区
         StringBuffer buffer = new StringBuffer();
         // 遍历该单词数组，再遍历其中的每个单词，将其翻转后拼接到新字符串中
