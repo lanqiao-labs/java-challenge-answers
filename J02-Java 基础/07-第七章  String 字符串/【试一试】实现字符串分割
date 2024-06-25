@@ -1,10 +1,11 @@
 import java.util.StringTokenizer;
 
 public class StringRegex {
-   //提供的字符串素材，必须使用
-     public static String str1 = "123+456*789-123/456%789";
-     public static String str2 = "0 1 2 3 4 5 6 7 8 9";
+
    public static void main(String[] args) {
+   //提供的字符串素材，必须使用
+      String str1 = "123+456*789-123/456%789";
+      String str2 = "0 1 2 3 4 5 6 7 8 9";
        // 程序代码
        StringRegex sr = new StringRegex();
        sr.splitWord(str1,"+*-/%");
