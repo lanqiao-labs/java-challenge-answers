@@ -16,7 +16,8 @@ public class Cylinder {
         System.out.println("请输入圆柱的高：");
         int h = input.nextInt();
         // 根据公式计算柱体的体积
-        float v = PI * (r * r) * h;
+        float s= PI * (r * r) ;
+        float v = s * h;
         // 输出体积
         System.out.println("该圆柱体的体积为："+ v);
         // 资源释放
