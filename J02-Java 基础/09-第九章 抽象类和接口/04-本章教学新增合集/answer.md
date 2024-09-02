@@ -1,908 +1,365 @@
-
-# 一、现代陆战装备（一）
-
-## 参考答案
-
-1. `MarineEquipment.java` 类
+# **回文字符串答案**
 
 ```java
-package org.lanqiao.entity;
+public class Palindrome{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+        System.out.println("请输入一个字符串");
+        String next = sc.next();
+        //将String转换成StringBuilder
+        StringBuilder stringBuilder = new StringBuilder(next);
+        StringBuilder reverse = stringBuilder.reverse();
+        if (reverse.toString().equals(next)){
+            System.out.println("是一个回文字符串");
+        }else {
+            System.out.println("不是一个回文字符串");
+        }
+	}
+}
 
-/**
- * 陆战装备类
- */
-public class MarineEquipment {
-    private int range;  //射程
-    private double weight;  //重量
+```
 
-    /**
-     * get/set方法
-     */
-    public int getRange() {
-        return range;
+# **拼接字符串答案**
+
+```java
+public class Splicing{
+	public static void main(String[] args) {
+        int[] arr = {1,2,3};
+        spliceArr(arr);
+        /**
+         * 需求:定义一个方法，把int数组中的数据按照指定的格式拼接成一个字符串返回
+         * 调用该方法，并在控制台输出结果。
+         * 例如：数组为int[] arr = {1,2,3};
+         * 执行方法后的输出结果为：[1,2,3]
+         */
+    }
+    public static void spliceArr(int[] arr){
+        StringBuilder sb = new StringBuilder("[");
+        //思路:先把数据里面的数据遍历出来到StringBuilder里面去
+        //通过for循环把它遍历成这个样式[1,2,
+        for (int i = 0;i<arr.length-1;i++){
+            sb.append(arr[i]+",");
+        }
+        //最后的格式需要特殊处理
+        //arr.length = 3;
+        //arr.length - 1 = 2
+        //arr[2] = 3;
+        //arr[arr.length - 1] = 3
+        //3]
+        //再把3]去做拼接
+        sb.append(arr[arr.length-1]+"]");
+        System.out.println(sb);//[1,2,3]
+    }
+}
+
+```
+
+# **编写带有抽象类的标准JavaBean类答案**
+
+FootballPlayer
+
+```
+public abstract class FootballPlayer {
+    private String name;
+    private int number;
+
+    public abstract void drink();
+    public FootballPlayer(String name, int number) {
+        this.name = name;
+        this.number = number;
     }
 
-    public void setRange(int range) {
-        this.range = range;
+    public FootballPlayer() {
     }
 
-    public double getWeight() {
-        return weight;
+    public String getName() {
+        return name;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    /**
-     * 构造方法
-     */
-    public MarineEquipment() {
+    public int getNumber() {
+        return number;
     }
 
-    public MarineEquipment(int range, double weight) {
-        this.range = range;
-        this.weight = weight;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
-    /**
-     * 显示性能参数信息
-     */
-    public String showInfo() {
-        return "射程：" + this.getRange() + "公里，重量：" + this.getWeight() + "吨";
-    }
-
-    /**
-     * 开火
-     */
-    public void fire() {
-        System.out.println("开火");
+    @Override
+    public String toString() {
+        return "FootballPlayer{" +
+                "name='" + name + '\'' +
+                ", number=" + number +
+                '}';
     }
 }
 ```
-2. `Tank.java` 类
 
-```java
-package org.lanqiao.entity;
+Forward
 
-/**
- * 坦克类
- */
-public class Tank extends MarineEquipment {
-    private double length; // 车长
-    private double width; // 车宽
-    private double maximumRoadSpeed; // 最大公路速度
+```
+public class Forward extends FootballPlayer{
 
-    /**
-     * get/set方法
-     */
-    public double getLength() {
-        return length;
+    public Forward(String name, int number) {
+        super(name, number);
     }
 
-    public void setLength(double length) {
-        this.length = length;
+    public Forward() {
     }
 
-    public double getWidth() {
-        return width;
+    @Override
+    public void drink() {
+        System.out.println("前锋"+getName()+"正在喝水");
     }
-
-    public void setWidth(double width) {
-        this.width = width;
-    }
-
-    public double getMaximumRoadSpeed() {
-        return maximumRoadSpeed;
-    }
-
-    public void setMaximumRoadSpeed(double maximumRoadSpeed) {
-        this.maximumRoadSpeed = maximumRoadSpeed;
-    }
-
-    /**
-     * 构造方法
-     */
-    public Tank() {
-    }
-
-    public Tank(double length, double width, double maximumRoadSpeed) {
-        this.length = length;
-        this.width = width;
-        this.maximumRoadSpeed = maximumRoadSpeed;
-    }
-    /**
-     * 重写父类方法，显示性能参数信息
-     */
-    public String showInfo() {
-        return "射程：" + this.getRange() + "公里，重量：" + this.getWeight() + "吨，车长：" + this.getLength() + "米，车宽："
-                + this.getWidth() + "米，最在公路速度：" + this.getMaximumRoadSpeed() + "公里/小时";
+    public void goal(){
+        System.out.println("前锋"+getName()+"进球啦");
     }
 }
 ```
-3. `Test.java` 类
 
-```java
-package org.lanqiao.test;
+Goalkeeper
 
-import org.lanqiao.entity.Tank;
+```
+public class Goalkeeper extends FootballPlayer{
+    public Goalkeeper(String name, int number) {
+        super(name, number);
+    }
 
-/**
- * 测试类
- */
+    public Goalkeeper() {
+    }
+
+    @Override
+    public void drink() {
+        System.out.println("守门员"+getName()+"正在喝水");
+    }
+    public void saves(){
+        System.out.println("守门员"+getName()+"做出了一个非常舒展的扑救");
+    }
+}
+```
+
+Midfielder
+
+```
+public class Midfielder extends FootballPlayer {
+    public Midfielder(String name, int number) {
+        super(name, number);
+    }
+
+    public Midfielder() {
+    }
+
+    @Override
+    public void drink() {
+        System.out.println("中场"+getName()+"正在喝水");
+    }
+    public void pass(){
+        System.out.println("中场"+getName()+"做出了一个精准指导传球");
+    }
+}
+```
+
+TestFootBall
+
+```
+public class TestFootBall {
+    public static void main(String[] args) {
+        Forward forward = new Forward();
+        forward.setName("Cristiano Ronaldo");
+        forward.setNumber(7);
+        Goalkeeper goalkeeper = new Goalkeeper("Buffon",1);
+        Midfielder midfielder = new Midfielder("KaKa",22);
+        forward.goal();
+        forward.drink();
+        goalkeeper.saves();
+        goalkeeper.drink();
+        midfielder.pass();
+        midfielder.drink();
+    }
+}
+```
+
+# **实现形状类：矩形与圆形的面积和周长计算**
+
+Circle
+
+```
+public class Circle extends Shape {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return 2 * Math.PI * radius;
+    }
+}
+```
+
+Rectangle
+
+```
+public class Rectangle extends Shape {
+    private double width;
+    private double height;
+
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    @Override
+    public double calculateArea() {
+        return width * height;
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return 2 * (width + height);
+    }
+}
+```
+
+Shape
+
+```
+public abstract class Shape {
+    public abstract double calculateArea(); //计算面积
+    public abstract double calculatePerimeter(); //计算周长
+}
+```
+
+TestShape
+
+```
+public class TestShape {
+    public static void main(String[] args) {
+        Shape rectangle = new Rectangle(4.0, 5.0);
+        Shape circle = new Circle(4.0);
+        System.out.println("矩形面积: " + rectangle.calculateArea());
+        System.out.println("矩形周长: " + rectangle.calculatePerimeter());
+
+        System.out.println("圆的面积: " + String.format("%.2f", circle.calculateArea()));
+        System.out.println("圆的周长: " + String.format("%.2f", circle.calculatePerimeter()));
+    }
+}
+```
+
+# **简单的接口实现**
+
+Vehicle
+
+```
+public interface Vehicle {
+    void start();
+    void stop();
+}
+```
+
+Car
+
+```
+public class Car implements Vehicle{
+    @Override
+    public void start() {
+        System.out.println("汽车开始启动了");
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("汽车停止了");
+    }
+}
+```
+
+Test
+
+```
 public class Test {
     public static void main(String[] args) {
-        Tank tank = new Tank();
-        tank.setRange(3);
-        tank.setWeight(3);
-        tank.setLength(8);
-        tank.setWidth(4);
-        tank.setMaximumRoadSpeed(80);
-        System.out.println(tank.showInfo()); 
+        Car myCar = new Car();
+        myCar.start();
+        myCar.stop();
     }
 }
 ```
 
-# 二、现代海战装备
+# **支付处理系统**
 
-## 参考答案
-
-1. `Warship.java` 类
-
-```java
-package org.lanqiao.entity;
-
-/**
- * 战舰类
- */
-public class Warship {
-    private int draft; // 吃水
-    private int length; // 舰长
-    private int beam; // 舰宽
-    private double speed; // 航速
-    private String endurance; // 继航
-    private String model; // 型号
-
-    /** get/set方法 */
-    public int getDraft() {
-        return draft;
-    }
-
-    public void setDraft(int draft) {
-        this.draft = draft;
-    }
-
-    public double getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(double speed) {
-        this.speed = speed;
-    }
-
-    public String getEndurance() {
-        return endurance;
-    }
-
-    public void setEndurance(String endurance) {
-        this.endurance = endurance;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public int getBeam() {
-        return beam;
-    }
-
-    public void setBeam(int beam) {
-        this.beam = beam;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    /**
-     * 空构造方法
-     */
-    public Warship() {
-    }
-
-    /**
-     * 航行
-     */
-    public void navigation() {
-        System.out.println("行驶");
-    }
-
-    /**
-     * 开火
-     */
-    public void fire() {
-        System.out.println("开火");
-    }
-}
-```
-2. `Fighter.java` 类
-
-```java
-package org.lanqiao.entity;
-/**
- * 护卫舰类
- */
-public class Frigate extends Warship {
-    public void fire(){
-        System.out.println("发射舰对空导弹");
-    }
-}
+Payment
 
 ```
-3. `Destroyer.java` 类
-
-```java
-package org.lanqiao.entity;
-/**
- * 驱逐舰类
- */
-public class Destroyer extends Warship {
-    public void fire(){
-        System.out.println("发射深水炸弹");
-    }
-}
-```
-4. `Submarine.java` 类
-
-```java
-package org.lanqiao.entity;
-/**
- * 潜艇类
- */
-public class Submarine extends Warship {
-    public void fire(){
-        System.out.println("发射鱼雷");
-    }
+public interface Payment {
+    boolean processPayment(double amount);//支付接口
 }
 ```
 
-# 三、现代空战装备（一）
+AlipayPayment
 
-## 参考答案
+```
+public class AlipayPayment implements Payment{
+    private String alipayNumber; //支付宝号码
 
-1. `Fighter.java` 类
-
-```java
-package org.lanqiao.entity;
-/**
- * 战机类
- */
-public class Fighter{
-    private int range;  //最大航程
-    private double speed;  //飞行速度
-    private int crew;  //乘员数量
-    private double maximumTakeoffWeight;  //起飞重量
-    private double length;  //长度
-    private double wingspan;  //翼展
-    private double height;  //高度
-    private double combatRadius;  //作战半径
-    /**
-     * get/set方法
-     */
-    public int getRange() {
-        return range;
+    public AlipayPayment(String alipayNumber) {
+        alipayNumber = alipayNumber;
     }
 
-    public void setRange(int range) {
-        this.range = range;
+    public AlipayPayment() {
     }
 
-    public double getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(double speed) {
-        this.speed = speed;
-    }
-
-    public int getCrew() {
-        return crew;
-    }
-
-    public void setCrew(int crew) {
-        this.crew = crew;
-    }
-
-    public double getMaximumTakeoffWeight() {
-        return maximumTakeoffWeight;
-    }
-
-    public void setMaximumTakeoffWeight(double maximumTakeoffWeight) {
-        this.maximumTakeoffWeight = maximumTakeoffWeight;
-    }
-
-    public double getLength() {
-        return length;
-    }
-
-    public void setLength(double length) {
-        this.length = length;
-    }
-
-    public double getWingspan() {
-        return wingspan;
-    }
-
-    public void setWingspan(double wingspan) {
-        this.wingspan = wingspan;
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
-    public double getCombatRadius() {
-        return combatRadius;
-    }
-
-    public void setCombatRadius(double combatRadius) {
-        this.combatRadius = combatRadius;
-    }
-    /**
-     * 构造方法
-     */
-    public Fighter(){}
-    public Fighter(int range, double speed, int crew, double maximumTakeoffWeight, double length, double wingspan, double height, double combatRadius) {
-        this.range = range;
-        this.speed = speed;
-        this.crew = crew;
-        this.maximumTakeoffWeight = maximumTakeoffWeight;
-        this.length = length;
-        this.wingspan = wingspan;
-        this.height = height;
-        this.combatRadius = combatRadius;
-    }
-
-    /**
-     * 开火
-     */
-    public void fire(){
-        System.out.println("开火");
-    }
-
-    /**
-     * 飞行
-     */
-    public void flight(){
-        System.out.println("飞行");
-    }
-
-    /**
-     * 用途描述
-     */
-    public void function (){
-        System.out.println("战斗机");
-    }
-
-    public String toString() {
-        return "Fighter [range="+range + ", speed=" + speed + ", crew=" + crew + ", maximumTakeoffWeight="
-                + maximumTakeoffWeight + ", length=" + length + ", wingspan=" + wingspan + ", height=" 
-                + height+ ", combatRadius=" + combatRadius + "]";
-    }
-
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Fighter other = (Fighter) obj;
-        if (range != other.range)
-            return false;
-        if (Double.doubleToLongBits(speed) != Double.doubleToLongBits(other.speed))
-            return false;
-        if (crew != other.crew)
-            return false;
-        if (Double.doubleToLongBits(maximumTakeoffWeight) != Double.doubleToLongBits(other.maximumTakeoffWeight))
-            return false;
-        if (Double.doubleToLongBits(length) != Double.doubleToLongBits(other.length))
-            return false;
-        if (Double.doubleToLongBits(wingspan) != Double.doubleToLongBits(other.wingspan))
-            return false;
-        if (Double.doubleToLongBits(height) != Double.doubleToLongBits(other.height))
-            return false;
-        if (Double.doubleToLongBits(combatRadius) != Double.doubleToLongBits(other.combatRadius))
-            return false;
+    @Override
+    public boolean processPayment(double amount) {
+        System.out.println("支付宝账号:"+alipayNumber+"支付宝支付: 金额:$" + amount);
         return true;
     }
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + range;
-        long temp;
-        temp = Double.doubleToLongBits(speed);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        result = prime * result + crew;
-        temp = Double.doubleToLongBits(maximumTakeoffWeight);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(length);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(wingspan);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(height);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(combatRadius);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        return result;
+}
+```
+
+CreditCardPayment
+
+```
+public class CreditCardPayment implements Payment{
+    private String cardNumber; //信用卡号码
+
+    public CreditCardPayment(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public CreditCardPayment() {
+    }
+
+    @Override
+    public boolean processPayment(double amount) {
+        System.out.println("信用卡账号:"+cardNumber+"信用卡支付: 金额:$" + amount);
+        return true;
     }
 }
 ```
-2. `Test.java` 类
 
-```java
-package org.lanqiao.test;
+TestPayment
 
-import org.lanqiao.entity.Fighter;
-
-/**
- * 测试类
- */
-public class Test{
+```
+public class TestPayment {
     public static void main(String[] args) {
-        Fighter f1 = new Fighter(1000, 800, 2, 50, 15, 20, 5.2, 500);
-        Fighter f2 = new Fighter(1200, 800, 2, 50, 15, 20, 5.2, 300);
-        System.out.println(f1);
-        System.out.println(f2);
-        System.out.println(f1.equals(f2));
+        AlipayPayment alipayPayment = new AlipayPayment("18108391256");
+        CreditCardPayment creditCardPayment = new CreditCardPayment("13212396864");
+        if (alipayPayment.processPayment(50)){
+            System.out.println("支付宝支付成功");
+        }
+        if (creditCardPayment.processPayment(100)){
+            System.out.println("信用卡支付成功");
+        }
     }
 }
 ```
 
-# 四、现代陆战装备（二）
-
-## 参考答案
-
-1. `MarineEquipment.java` 类
-
-```java
-package org.lanqiao.entity;
-
-/**
- * 陆战装备类
- */
-public class MarineEquipment {
-    private int range;  //射程
-    private double weight;  //重量
-
-    /**
-     * get/set方法
-     */
-    public int getRange() {
-        return range;
-    }
-
-    public void setRange(int range) {
-        this.range = range;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    /**
-     * 构造方法
-     */
-    public MarineEquipment() {
-    }
-
-    public MarineEquipment(int range, double weight) {
-        this.range = range;
-        this.weight = weight;
-    }
-
-    /**
-     * 显示性能参数信息
-     */
-    public String showInfo() {
-        return "射程：" + this.getRange() + "公里，重量：" + this.getWeight() + "吨";
-    }
-
-    /**
-     * 开火
-     */
-    public void fire() {
-        System.out.println("开火");
-    }
-}
-```
-2. `Tank.java` 类
-
-```java
-package org.lanqiao.entity;
-
-/**
- * 坦克类
- */
-public class Tank extends MarineEquipment {
-    private double length; // 车长
-    private double width; // 车宽
-    private double maximumRoadSpeed; // 最大公路速度
-
-    /**
-     * get/set方法
-     */
-    public double getLength() {
-        return length;
-    }
-
-    public void setLength(double length) {
-        this.length = length;
-    }
-
-    public double getWidth() {
-        return width;
-    }
-
-    public void setWidth(double width) {
-        this.width = width;
-    }
-
-    public double getMaximumRoadSpeed() {
-        return maximumRoadSpeed;
-    }
-
-    public void setMaximumRoadSpeed(double maximumRoadSpeed) {
-        this.maximumRoadSpeed = maximumRoadSpeed;
-    }
-
-    /**
-     * 构造方法
-     */
-    public Tank() {
-    }
-
-    public Tank(int range, double weight, double length, double width, double maximumRoadSpeed) {
-        // 调用父类的全参构造方法，为父类属性赋值
-        super(range, weight);
-        // 为属性赋值
-        this.length = length;
-        this.width = width;
-        this.maximumRoadSpeed = maximumRoadSpeed;
-    }
-
-    /**
-     * 重写父类方法，显示性能参数信息
-     */
-    public String showInfo() {
-        return "射程：" + super.getRange() + "公里，重量：" + super.getWeight() + "吨，车长：" + this.getLength() + "米，车宽："
-                + this.getWidth() + "米，最在公路速度：" + this.getMaximumRoadSpeed() + "公里/小时";
-    }
-}
-```
-3. `Test.java` 类
-
-```java
-package org.lanqiao.test;
-
-import org.lanqiao.entity.Tank;
-
-/**
- * 测试类
- */
-public class Test {
-    public static void main(String[] args) {
-        Tank tank = new Tank(3, 3, 8, 4, 80);
-        System.out.println(tank.showInfo());
-    }
-}
-```
-
-# 五、现代空战装备（二）
-
-## 参考答案
-
-1. `Warship.java` 类
-
-```java
-package org.lanqiao.entity;
-/**
- * 战舰类
- */
-public class Warship {
-    private int draft;  //吃水
-    private int length;  //舰长
-    private int beam;  //舰宽
-    private double speed;  //航速
-    private String endurance;  //继航
-    private String model;   //型号
-    /**get/set方法*/
-    public int getDraft() {
-        return draft;
-    }
-
-    public void setDraft(int draft) {
-        this.draft = draft;
-    }
-
-    public double getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(double speed) {
-        this.speed = speed;
-    }
-
-    public String getEndurance() {
-        return endurance;
-    }
-
-    public void setEndurance(String endurance) {
-        this.endurance = endurance;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public int getBeam() {
-        return beam;
-    }
-
-    public void setBeam(int beam) {
-        this.beam = beam;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    /**
-     * 构造方法
-     */
-    public Warship() {
-    }
-    
-    public Warship(int draft, int length, int beam, double speed, String endurance, String model) {
-        this.draft = draft;
-        this.length = length;
-        this.beam = beam;
-        this.speed = speed;
-        this.endurance = endurance;
-        this.model = model;
-    }
-
-    /**
-     * 航行
-     */
-    public void navigation(){
-        System.out.println("行驶");
-    }
-
-    /**
-     * 开火
-     */
-    public void fire(){
-        System.out.println("开火");
-    }
-
-     @Override
-    public String toString() {
-        return "Warship [吃水=" + draft + "米, 舰长=" + length + "米, 舰宽=" + beam + "米, 航速=" + speed + "节, 续航="+ endurance + ", 型号=" + model + "]";
-    }
-}
-```
-
-2. `Destroyer.java` 类
-
-```java
-package org.lanqiao.entity;
-
-/**
- * 驱逐舰类
- */
-public class Destroyer extends Warship {
-    public void fire() {
-        super.fire();
-        System.out.println("发射深水炸弹");
-    }
-
-    public String toString() {
-        return super.toString() + "的驱逐舰";
-    }
-}
-```
-
-3. `Frigate.java` 类
-
-```java
-package org.lanqiao.entity;
-
-/**
- * 护卫舰类
- */
-public class Frigate extends Warship {
-    public void fire() {
-        super.fire();
-        System.out.println("发射舰对空导弹");
-    }
-
-    public String toString() {
-        return super.toString() + "的护卫舰";
-    }
-}
-```
-
-4. `Submarine.java` 类
-
-```java
-package org.lanqiao.entity;
-
-/**
- * 潜艇类
- */
-public class Submarine extends Warship {
-    public void fire() {
-        super.fire();
-        System.out.println("发射鱼雷");
-    }
-
-    public String toString() {
-        return super.toString() + "的潜艇";
-    }
-}
-```
-
-5. `Test.java` 类
-
-```java
-package org.lanqiao.test;
-
-import org.lanqiao.entity.Destroyer;
-import org.lanqiao.entity.Frigate;
-import org.lanqiao.entity.Submarine;
-/**
- * 测试类
- */
-public class Test{
-    public static void main(String[] args) {
-        Destroyer d = new Destroyer();
-        d.setDraft(6);
-        d.setLength(163);
-        d.setBeam(17);
-        d.setSpeed(32);
-        d.setEndurance("5000/18节");
-        d.setModel("加尔各答级");
-        Frigate f = new Frigate();
-        f.setDraft(6);
-        f.setLength(134);
-        f.setBeam(16);
-        f.setSpeed(27);
-        f.setEndurance("4000/18节");
-        f.setModel("国产054");
-        Submarine s = new Submarine();
-        s.setDraft(17);
-        s.setLength(75);
-        s.setBeam(10);
-        s.setSpeed(17);
-        s.setEndurance("6000/7节");
-        s.setModel("基洛级");
-        System.out.println(d.toString());
-        d.fire();
-        System.out.println(f.toString());
-        f.fire();
-        System.out.println(s.toString());
-        s.fire();
-    }
-}
-```
-
-# 六、大厂笔试
-
-## 参考答案
-
-1. `Counter.java` 类
-
-```java
-package org.lanqiao.entity;
-
-/**
- * 计数器类
- */
-public class Counter {
-
-    private String id; // 编号
-    private String reserve; // 预留
-    public static int count; // 计数
-
-    /** get/set方法 */
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getReserve() {
-        return reserve;
-    }
-
-    public void setReserve(String reserve) {
-        this.reserve = reserve;
-    }
-
-    /** 构造方法 */
-    public Counter() {
-    }
-
-    public Counter(String id, String reserve) {
-        this.id = id;
-        this.reserve = reserve;
-        increment();
-    }
-
-    /**
-     * 打印信息
-     */
-    public void show() {
-        System.out.println("编号：" + this.id + "，预留：" + this.reserve);
-    }
-
-    /**
-     * 计数累加
-     */
-    public static void increment() {
-        count++;
-        System.out.println("第 " + count + " 个Counter对象");
-    }
-}
-```
-
-2. `Test.java` 类
-
-```java
-package org.lanqiao.test;
-
-import org.lanqiao.entity.Counter;
-
-/**
- * 测试类
- */
-public class Test {
-    public static void main(String[] args) {
-        // 创建2个Counter对象
-        Counter c1 = new Counter("188944", "无");
-        c1.show();
-        Counter c2 = new Counter("4444444", "好消息");
-        c2.show();
-        // 显示Counter对象的个数
-        System.out.println("Counter对象个数为：" + Counter.count);
-    }
-}
-```
-## 结束
