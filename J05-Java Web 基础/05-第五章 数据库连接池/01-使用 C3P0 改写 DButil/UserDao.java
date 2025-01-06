@@ -12,7 +12,7 @@ public class UserDao {
         String sql = "select * from users where user_id = ?";
         User user = new User();
         try {
-            ResultSet rs = DBUtil.query(sql);
+            ResultSet rs = DBUtil.query(sql,user_id);
             while (rs.next()) {
                 // 将查询到的用户信息封装到 user 对象中
                 user.setUserId(rs.getInt("user_id"));
