@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/UserControl")
+@WebServlet("/addUserInfo")
 public class UserControl extends HttpServlet {
     /**
      *
